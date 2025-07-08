@@ -204,3 +204,22 @@ footer {
 .carousel img {
   border-radius: 8px;
 }
+.detpro {
+  text-align: center;
+}
+.detpro p {
+  color: black;
+  font-weight: normal;
+  text-align: justify;
+}
+.detpro th {
+  color: black;
+  padding: 10px;
+}
+.detpro form {
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+  margin: 0 auto;
+  margin-top: 1rem;
+}

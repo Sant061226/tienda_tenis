@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tienda de Tenis</title>
+    <title>Tienda de Computadoras</title>
     <link rel="stylesheet" href="Vista/html/css/styles.css">
     <script src="Vista/jquery/jquery.js"></script>
     <script src="Vista/js/script.js"></script>
@@ -12,7 +12,7 @@
 
 <body>
     <header>
-        <h1>Tienda de Tenis</h1>
+        <h1>Tienda de Computadoras</h1>
         <nav>
             <a href="index.php?accion=panelAdmin">Productos</a>
             <a href="index.php?accion=panelAdmin1">Categorias</a>
@@ -37,7 +37,7 @@
     </section>
 
     <footer>
-        <p>&copy; 2025 Tienda de Tenis. Todos los derechos reservados.</p>
+        <p>&copy; 2025 Tienda de Computadoras. Todos los derechos reservados.</p>
     </footer>
 </body>
 

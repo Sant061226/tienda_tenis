@@ -192,3 +192,30 @@ $(document).on("click", ".filtro-categoria", function (e) {
     }
   );
 });
+$(document).ready(function () {
+  $.getJSON("Modelo/Dashboard.php", function (data) {
+    const labels = data.map((item) => item.nombre);
+    const cantidades = data.map((item) => item.total_pedidos || 0); // <-- Cambiado aquí
+
+    const ctx = document.getElementById("graficaPedidos").getContext("2d");
+    new Chart(ctx, {
+      type: "bar",
+      data: {
+        labels: labels,
+        datasets: [
+          {
+            label: "Cantidad de pedidos",
+            data: cantidades,
+            backgroundColor: "rgb(39, 38, 31)",
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { display: false },
+        },
+      },
+    });
+  });
+});

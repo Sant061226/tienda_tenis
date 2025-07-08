@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tienda de Tenis</title>
+    <title>Tienda de Computadoras</title>
     <link rel="stylesheet" href="Vista/html/css/styles.css">
     <script src="Vista/jquery/jquery.js"></script>
     <script src="Vista/js/script.js"></script>

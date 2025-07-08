@@ -28,8 +28,7 @@ $sql = "SELECT productos.id, productos.nombre, productos.especificaciones, produ
 $conexion->consulta($sql);
 $producto = $conexion->obtenerResult()->fetch_assoc();
 ?>
-
-<section id="detalle-producto" class="adminsty">
+<section id="detalle-producto" class="detpro">
     <div class="producto-detalle">
         <?php if ($producto) { ?>
             <?php
@@ -45,22 +44,45 @@ $producto = $conexion->obtenerResult()->fetch_assoc();
             }
             $conexion_img->cerrar();
             ?>
-            <p><strong><?php echo $producto["Categoria"] ?></strong></p>
-            <?php if (count($imagenes) > 1): ?>
-                <div class="carousel" data-prod="<?php echo $id_prod; ?>">
-                    <?php foreach ($imagenes as $idx => $img): ?>
-                        <img src="upload/<?php echo $img; ?>" class="carousel-img"
-                            style="display:<?php echo $idx == 0 ? '' : 'none'; ?>;" width="50%" alt="">
-                    <?php endforeach; ?>
-                    <button class="prev" type="button">&#10094;</button>
-                    <button class="next" type="button">&#10095;</button>
-                </div>
-            <?php elseif (count($imagenes) == 1): ?>
-                <img src="upload/<?php echo $imagenes[0]; ?>" width="50%" alt="">
-            <?php endif; ?>
-            <h3><?php echo $producto["nombre"] ?></h3>
-            <p>Especificaciones: <?php echo $producto["especificaciones"] ?></p>
-            <p>Precio: $<?php echo number_format($producto["precio"], 0, ',', '.') ?></p>
+            <h2><strong><?php echo $producto["Categoria"] ?></strong></h2>
+            <br>
+            <table class="tablita">
+                <tr>
+                    <th>Producto</th>
+                    <th>
+                        <?php if (count($imagenes) > 1): ?>
+                            <div class="carousel" data-prod="<?php echo $id_prod; ?>">
+                                <?php foreach ($imagenes as $idx => $img): ?>
+                                    <img src="upload/<?php echo $img; ?>" class="carousel-img"
+                                        style="display:<?php echo $idx == 0 ? '' : 'none'; ?>;" width="50%" alt="">
+                                <?php endforeach; ?>
+                                <button class="prev" type="button">&#10094;</button>
+                                <button class="next" type="button">&#10095;</button>
+                            </div>
+                        <?php elseif (count($imagenes) == 1): ?>
+                            <img src="upload/<?php echo $imagenes[0]; ?>" width="50%" alt="">
+                        <?php endif; ?>
+                    </th>
+                </tr>
+                <tr>
+                    <th>Nombre</th>
+                    <th>
+                        <p><?php echo $producto["nombre"] ?></p>
+                    </th>
+                </tr>
+                <tr>
+                    <th>Especificaciones</th>
+                    <th>
+                        <p><?php echo $producto["especificaciones"] ?></p>
+                    </th>
+                </tr>
+                <tr>
+                    <th>Precio</th>
+                    <th>
+                        <p>$<?php echo number_format($producto["precio"], 0, ',', '.') ?></p>
+                    </th>
+                </tr>
+            </table>
             <form id="Form-agregarCarrito" action="index.php?accion=agregarCarrito" method="post">
                 <input type="hidden" name="id" value="<?php echo $producto["id"]; ?>">
                 <input type="hidden" name="nombre" value="<?php echo $producto["nombre"]; ?>">
