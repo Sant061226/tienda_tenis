@@ -33,19 +33,29 @@
         </nav>
     </header>
 
-    <section id="catalogo">
-        <div class="container">
-            <div class="row">
-                <div class="col">
-                    <img src="Vista/images/banne.jpeg" alt="Imagen de Tenis" class="banner">
-                </div>
-                <div class="col">
-                    <h1>Bienvenido</h1>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nostrum, deleniti. Magni rerum facere dicta maiores fugiat, beatae praesentium magnam commodi porro deleniti minima, voluptates non ducimus et quod adipisci cumque. Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium quos deleniti ipsum dolore magnam? Esse laborum sint voluptates! Eos sit laudantium tempore voluptate cumque, perspiciatis porro voluptatem fugiat officiis beatae?
-                    </p>
-                    <h6>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusantium veritatis vel, ipsum recusandae fuga sequi in, earum odio accusamus officia excepturi ab explicabo enim qui nobis aspernatur. Dolor, optio laudantium.</h6>
-                </div>
-            </div>
+    <section id="admin" class="adminsty">
+
+        <div id="tabla-carrito">
+            <?php
+            if (empty($productos)) {
+                echo "<p>El carrito está vacío.</p>";
+            } else {
+                echo "<table border='1'><tr><th>Producto</th><th>Cantidad</th><th>Precio</th></tr>";
+                foreach ($productos as $item) {
+                    echo "<tr>
+            <td>{$item['nombre']}</td>
+            <td>{$item['cantidad']}</td>
+            <td>$" . number_format($item['precio_unitario'], 0, ',', '.') . "</td>
+          </tr>";
+                }
+                echo "</table>";
+            }
+            ?>
+            <?php if (!empty($productos)) { ?>
+                <form action="index.php?accion=pagar" method="post">
+                    <button type="submit" class="btn-pagar">Pagar ahora (<?php echo count($productos); ?>)</button>
+                </form>
+            <?php } ?>
         </div>
     </section>
     <section id="admin" class="adminsty">

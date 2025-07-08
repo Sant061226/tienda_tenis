@@ -2,37 +2,47 @@
 class Producto
 {
     private $nombre;
-    private $descripcion;
+    private $espicifaciones;
+    private $marca;
+    private $modelo;
     private $precio;
     private $categoria;
-    private $foto;
 
-    public function __construct($nombre, $descripcion, $precio, $categoria, $foto)
+    public function __construct($nombre, $espicifaciones, $marca, $modelo, $precio, $categoria)
     {
         $this->nombre = $nombre;
-        $this->descripcion = $descripcion;
+        $this->espicifaciones = $espicifaciones;
+        $this->marca = $marca;
+        $this->modelo = $modelo;
         $this->precio = $precio;
         $this->categoria = $categoria;
-        $this->foto = $foto;
     }
+    // public function obtenerId()
+    // {
+    //     return $this->id;
+    // }
     public function obtenerNombre()
     {
         return $this->nombre;
     }
-    public function obtenerDescripcion()
+    public function obtenerEspicificaciones()
     {
-        return $this->descripcion;
+        return $this->espicifaciones;
     }
-    public function obtnerPrecio()
+    public function obtenerMarca()
+    {
+        return $this->marca;
+    }
+    public function obtenerModelo()
+    {
+        return $this->modelo;
+    }
+    public function obtenerPrecio()
     {
         return $this->precio;
     }
     public function obtenerCategoria()
     {
         return $this->categoria;
-    }
-    public function obtenerFoto()
-    {
-        return $this->foto;
     }
 }

@@ -3,7 +3,6 @@
 require_once "Conexion.php";
 $conexion = new Conexion();
 $conexion->abrir();
-<<<<<<< HEAD
 
 session_start();
 
@@ -12,6 +11,7 @@ $pagina_actual = isset($_POST['pagina']) ? intval($_POST['pagina']) : 1;
 if ($pagina_actual < 1) $pagina_actual = 1;
 
 $id_categoria = isset($_POST['id_categoria']) ? intval($_POST['id_categoria']) : 0;
+<<<<<<< HEAD
 
 // Contar total de productos (con o sin filtro)
 $sql_count = "SELECT COUNT(*) AS total FROM productos";
@@ -27,7 +27,6 @@ $offset = ($pagina_actual - 1) * $resultados_por_pagina;
 
 // Consulta principal con paginación
 =======
-$id_categoria = isset($_POST['id_categoria']) ? intval($_POST['id_categoria']) : 0;
 >>>>>>> 745c359bc7be12421a1d82e30cbdcc20b51a57a1
 $sql = "SELECT productos.id, productos.nombre, productos.especificaciones, productos.precio, categorias.nombre as Categoria, categorias.id as id_cat 
         FROM productos 
@@ -35,11 +34,8 @@ $sql = "SELECT productos.id, productos.nombre, productos.especificaciones, produ
 if ($id_categoria > 0) {
     $sql .= " WHERE productos.id_categoria = $id_categoria";
 }
-<<<<<<< HEAD
 $sql .= " LIMIT $resultados_por_pagina OFFSET $offset";
 
-=======
->>>>>>> 745c359bc7be12421a1d82e30cbdcc20b51a57a1
 $conexion->consulta($sql);
 $result = $conexion->obtenerResult();
 $filas = $conexion->obtenerFilasAfectadas();
@@ -107,7 +103,6 @@ session_start();
                     </div>
                 <?php } ?>
             </div>
-<<<<<<< HEAD
             <br>
             <div class="paginacion">
                 <?php if ($pagina_actual > 1): ?>
@@ -124,8 +119,6 @@ session_start();
                     <button class="btn-pagina" data-pagina="<?php echo $pagina_actual + 1; ?>">Siguiente</button>
                 <?php endif; ?>
             </div>
-=======
->>>>>>> 745c359bc7be12421a1d82e30cbdcc20b51a57a1
         <?php } else { ?>
             <h3>No hay productos en esta categoría.</h3>
         <?php } ?>

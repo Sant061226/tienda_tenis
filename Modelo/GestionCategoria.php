@@ -1,6 +1,8 @@
-<?php 
-class GestorCategoria{
-    public function ingresarCategoria(Categoria $categoria){
+<?php
+class GestorCategoria
+{
+    public function ingresarCategoria(Categoria $categoria)
+    {
         $conexion = new Conexion();
         $conexion->abrir();
         $nombre = $categoria->obtenerNombre();
@@ -9,12 +11,23 @@ class GestorCategoria{
         $filasAfectadas = $conexion->obtenerFilasAfectadas();
         $conexion->cerrar();
     }
-    public function borrarCategoria($id){
+    public function borrarCategoria($id)
+    {
         $conexion = new Conexion();
         $conexion->abrir();
-        $sql = "DELETE FROM categorias WHERE id = $id";
-        $conexion->consulta($sql);
-        $conexion->cerrar();
+        // Verifica solo productos de la categoría a eliminar
+        $verificar = "SELECT * FROM productos WHERE id_categoria = $id";
+        $conexion->consulta($verificar);
+        $filasAfectadas = $conexion->obtenerFilasAfectadas();
+        if ($filasAfectadas > 0) {
+            $conexion->cerrar();
+            return 0; // No se puede borrar, tiene productos asociados
+        } else {
+            $sql = "DELETE FROM categorias WHERE id = $id";
+            $conexion->consulta($sql);
+            $conexion->cerrar();
+            return 1;
+        }
     }
     public function edit($id)
     {
@@ -37,4 +50,3 @@ class GestorCategoria{
         return $filasAfectadas;
     }
 }
-?>

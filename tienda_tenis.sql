@@ -3,7 +3,11 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-06-2025 a las 00:42:32
+<<<<<<< HEAD
+-- Tiempo de generación: 08-07-2025 a las 21:30:24
+=======
+-- Tiempo de generación: 05-07-2025 a las 00:00:53
+>>>>>>> 745c359bc7be12421a1d82e30cbdcc20b51a57a1
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -24,6 +28,60 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `carritos`
+--
+
+CREATE TABLE `carritos` (
+  `id` int(11) NOT NULL,
+  `usuario_id` int(11) DEFAULT NULL,
+  `fecha_creacion` datetime DEFAULT current_timestamp(),
+  `estado` enum('pendiente','finalizado') DEFAULT 'pendiente'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `carritos`
+--
+
+INSERT INTO `carritos` (`id`, `usuario_id`, `fecha_creacion`, `estado`) VALUES
+(3, NULL, '2025-07-08 06:54:21', ''),
+(4, NULL, '2025-07-08 19:15:58', ''),
+(5, NULL, '2025-07-08 20:08:27', '');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `carrito_items`
+--
+
+CREATE TABLE `carrito_items` (
+  `id` int(11) NOT NULL,
+  `carrito_id` int(11) NOT NULL,
+  `producto_id` int(11) NOT NULL,
+  `cantidad` int(11) NOT NULL,
+  `precio_unitario` decimal(10,2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `carrito_items`
+--
+
+INSERT INTO `carrito_items` (`id`, `carrito_id`, `producto_id`, `cantidad`, `precio_unitario`) VALUES
+(1, 3, 1, 1, 2400000.00),
+(2, 3, 1, 1, 2400000.00),
+(3, 4, 1, 1, 2400000.00),
+(4, 4, 1, 1, 2400000.00),
+(5, 4, 1, 1, 2400000.00),
+(6, 4, 1, 1, 2400000.00),
+(7, 4, 13, 1, 2500000.00),
+(8, 4, 14, 1, 30000.00),
+(9, 5, 11, 1, 130000.00),
+(10, 5, 11, 1, 130000.00),
+(11, 5, 11, 1, 130000.00),
+(12, 5, 13, 1, 2500000.00);
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `categorias`
 --
 
@@ -37,9 +95,49 @@ CREATE TABLE `categorias` (
 --
 
 INSERT INTO `categorias` (`id`, `nombre`) VALUES
-(1, 'Deportivos'),
-(2, 'Casuales'),
-(3, 'Exploracion');
+(1, 'Portatiles'),
+(2, 'Computadores de escritorio'),
+(3, 'Repuestos'),
+(7, 'Perifericos');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `imagenes_producto`
+--
+
+CREATE TABLE `imagenes_producto` (
+  `id` int(11) NOT NULL,
+  `imagenes` varchar(60) NOT NULL,
+  `id_producto` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `imagenes_producto`
+--
+
+INSERT INTO `imagenes_producto` (`id`, `imagenes`, `id_producto`) VALUES
+(1, 'OIP.jfif', 1),
+(2, 'OIP.jfif', 2),
+(8, '1751660625_0_N1fmHtI8gmkH_2Vu.png', 11),
+(9, '1751660625_Captura.PNG', 11),
+(12, '1751663266_DeWatermark.ai_1747624363206 (1).png', 13),
+(13, '1751663266_DeWatermark.ai_1747624363206.png', 13),
+(14, '1751663601_descarga (4).jpeg', 14),
+<<<<<<< HEAD
+(15, '1751663601_hp.jpeg', 14),
+(17, '1751999432_1751663601_hp.jpeg', 16),
+(18, '1751999432_rio-en-las-montanas-al-atardecer_3840x2400_xtrafo', 16),
+(19, '1751999520_1751663601_hp.jpeg', 17),
+(20, '1751999520_1751999196_OIP.jfif', 17),
+(21, '1751999573_notas-musicales.png', 18),
+(22, '1751999573_cohete.png', 18),
+(23, '1751999573_fuego.png', 18),
+(24, '1751999673_Lluvia de Ideas Mapa Mental Creativo Colorido .pn', 19),
+(25, '1751999673_evoluci-on-de-e_65368890.png', 19);
+=======
+(15, '1751663601_hp.jpeg', 14);
+>>>>>>> 745c359bc7be12421a1d82e30cbdcc20b51a57a1
 
 -- --------------------------------------------------------
 
@@ -61,7 +159,20 @@ CREATE TABLE `pedidos` (
 --
 
 INSERT INTO `pedidos` (`id`, `id_usuario`, `id_producto`, `cantidad`, `fecha`, `estado`) VALUES
-(1, 2, 2, 2025, '0000-00-00', 'solicitado');
+<<<<<<< HEAD
+(7, 2, 13, 2, '2025-07-10', 'entregado'),
+(8, 2, 14, 2, '2025-07-10', 'solicitado'),
+(9, 4, 2, 1, '2025-07-05', 'solicitado'),
+(10, 4, 1, 1, '2025-07-05', 'enviado'),
+(11, 4, 14, 2, '2025-07-05', 'cancelado'),
+(12, 2, 11, 5, '2025-07-09', 'enviado');
+=======
+(7, 2, 13, 2, '2025-07-10', 'solicitado'),
+(8, 2, 14, 2, '2025-07-10', 'solicitado'),
+(9, 4, 2, 1, '2025-07-05', 'solicitado'),
+(10, 4, 1, 1, '2025-07-05', 'solicitado'),
+(11, 4, 14, 2, '2025-07-05', 'solicitado');
+>>>>>>> 745c359bc7be12421a1d82e30cbdcc20b51a57a1
 
 -- --------------------------------------------------------
 
@@ -72,9 +183,10 @@ INSERT INTO `pedidos` (`id`, `id_usuario`, `id_producto`, `cantidad`, `fecha`, `
 CREATE TABLE `productos` (
   `id` int(11) NOT NULL,
   `nombre` varchar(50) NOT NULL,
-  `descripcion` text NOT NULL,
+  `especificaciones` text NOT NULL,
+  `marca` varchar(30) NOT NULL,
+  `modelo` varchar(30) NOT NULL,
   `precio` varchar(40) NOT NULL,
-  `imagen` varchar(50) NOT NULL,
   `id_categoria` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -82,11 +194,20 @@ CREATE TABLE `productos` (
 -- Volcado de datos para la tabla `productos`
 --
 
-INSERT INTO `productos` (`id`, `nombre`, `descripcion`, `precio`, `imagen`, `id_categoria`) VALUES
-(1, 'Tenis Modelo X', 'Talla 42', '180000', 'Captura.PNG', 1),
-(2, 'Zapatilla', 'Talla 37', '200000', 'Captura.PNG', 2),
-(4, 'Zapatillas Nike 2001', '39', '500000', 'Captura.PNG', 1),
-(6, 'Cordones cafes', '1 mt', '7000', 'Captura.PNG', 2);
+INSERT INTO `productos` (`id`, `nombre`, `especificaciones`, `marca`, `modelo`, `precio`, `id_categoria`) VALUES
+(1, 'all in one', 'Procesador: Intel Core i3 o AMD Ryzen 3\r\nMemoria RAM: 8 GB DDR4\r\nAlmacenamiento: SSD de 240 a 480 GB\r\nGráfica: Integrada (Intel UHD o Radeon Vega)\r\nSistema Operativo: Windows 10/11 o Linux\r\nFuente de poder: 400 a 500 watts\r\n\r\nPC de Escritorio para Uso Intermedio o Estudio\r\nProcesador: Intel Core i5 o AMD Ryzen 5\r\nMemoria RAM: 16 GB DDR4\r\nAlmacenamiento: SSD de 500 GB o más\r\nGráfica: Integrada o dedicada básica (como NVIDIA GTX 1650)\r\nSistema Operativo: Windows 10/11 o Linux\r\nFuente de poder: 500 a 600 watts\r\n\r\nPC de Escritorio para Gaming o Diseño Profesional\r\nProcesador: Intel Core i7/i9 o AMD Ryzen 7/9\r\nMemoria RAM: 32 GB DDR4 o DDR5\r\nAlmacenamiento: SSD NVMe de 1 TB más HDD de 2 TB\r\nGráfica: Tarjeta dedicada potente (NVIDIA RTX 3060/4070 o AMD RX 6700 XT o superior)\r\nSistema Operativo: Windows 11\r\nFuente de poder: 650 a 850 watts con certificación 80 Plus\r\nPlaca base: Compatible con DDR5 y PCIe 4.0 o 5.0\r\nRefrigeración: Sistema por aire de alto rendimiento o líquida', 'Asus', '000012123', '2400000', 2),
+(2, 'Lenovo SolarFlare', 'Procesador (CPU): Intel Core i3 (12ª o 13ª gen) / AMD Ryzen 3 5000 series\r\n\r\nMemoria RAM: 8 GB DDR4\r\n\r\nAlmacenamiento: 256 GB SSD (opcional HDD de 1 TB adicional)\r\n\r\nTarjeta gráfica (GPU): Integrada (Intel UHD / AMD Vega)\r\n\r\nPlaca base (motherboard): Compatible con CPU, con puertos USB 3.0 y HDMI\r\n\r\nSistema operativo: Windows 11 Home o Linux\r\n\r\nFuente de poder: 400W certificada\r\n\r\nGabinete: Mini torre o torre mediana con ventilación básica', 'Flare', 'XYZ123', '3000000', 2),
+(11, 'Teclado 56 pulgadas', 'abcdefghijklmnñopqrstuvwxyz', 'Avonz', '2030', '130000', 3),
+(13, 'Laptop', 'Procesador: Intel Core i3 o AMD Ryzen 3 Memoria RAM: 8 GB DDR4 Almacenamiento: SSD de 240 a 480 GB Gráfica: Integrada (Intel UHD o Radeon Vega) Sistema Operativo: Windows 10/11 o Linux Fuente de poder: 400 a 500 watts PC de Escritorio para Uso Intermedio o Estudio Procesador: Intel Core i5 o AMD Ryzen 5 Memoria RAM: 16 GB DDR4 Almacenamiento: SSD de 500 GB o más Gráfica: Integrada o dedicada básica (como NVIDIA GTX 1650) Sistema Operativo: Windows 10/11 o Linux Fuente de poder: 500 a 600 watts PC de Escritorio para Gaming o Diseño Profesional Procesador: Intel Core i7/i9 o AMD Ryzen 7/9 Memoria RAM: 32 GB DDR4 o DDR5 Almacenamiento: SSD NVMe de 1 TB más HDD de 2 TB Gráfica: Tarjeta dedicada potente (NVIDIA RTX 3060/4070 o AMD RX 6700 XT o superior) Sistema Operativo: Windows 11 Fuente de poder: 650 a 850 watts con certificación 80 Plus Placa base: Compatible con DDR5 y PCIe 4.0 o 5.0 Refrigeración: Sistema por aire de alto rendimiento o líquida', 'Hp', 'DFGHJGFV4B3213', '2500000', 1),
+<<<<<<< HEAD
+(14, 'Mouse inalambrico', 'ABCDEFGHIJKLMNÑOPQRSTUVWXYZ', 'Hp', 'G4HJ32GFDVB', '30000', 7),
+(16, 'Pc de Wendy', 'El PC de Wendy', 'Wendy', 'WendyX2YC', '3000000', 2),
+(17, 'Portatil de Wendy', 'El portatil de Wendy', 'Wendy', 'Wendy578DFHJ', '25000000', 1),
+(18, 'Repuestos de Wendy', 'Los repuestos de Wendt¿y', 'Wendy', 'Wendy-3B', '400000', 3),
+(19, 'Perifericos de Wendy', 'Los perifericos de Wendy:\r\n1. Wendy teclado\r\n2. Wendy ratón\r\n3. Wendy auriculares\r\n4. Wendy camara', 'Wendy', 'Wendy678-A32', '200000', 7);
+=======
+(14, 'Mouse inalambrico', 'ABCDEFGHIJKLMNÑOPQRSTUVWXYZ', 'Hp', 'G4HJ32GFDVB', '30000', 7);
+>>>>>>> 745c359bc7be12421a1d82e30cbdcc20b51a57a1
 
 -- --------------------------------------------------------
 
@@ -108,17 +229,41 @@ CREATE TABLE `usuarios` (
 
 INSERT INTO `usuarios` (`id`, `nombre`, `correo`, `contrasena`, `rol`) VALUES
 (1, 'Admin', 'admin@admin.com', '12345', 1),
-(2, 'jok', 'jok@gmail.com', '1212', 2);
+(2, 'jok', 'jok@gmail.com', '1212', 2),
+(3, 'Mario', 'mario@gmail.com', '1212', 2),
+(4, 'Sas', 'sas@gmail.com', '1212', 2);
 
 --
 -- Índices para tablas volcadas
 --
 
 --
+-- Indices de la tabla `carritos`
+--
+ALTER TABLE `carritos`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `usuario_id` (`usuario_id`);
+
+--
+-- Indices de la tabla `carrito_items`
+--
+ALTER TABLE `carrito_items`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `carrito_id` (`carrito_id`),
+  ADD KEY `producto_id` (`producto_id`);
+
+--
 -- Indices de la tabla `categorias`
 --
 ALTER TABLE `categorias`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `imagenes_producto`
+--
+ALTER TABLE `imagenes_producto`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_producto` (`id_producto`);
 
 --
 -- Indices de la tabla `pedidos`
@@ -146,32 +291,88 @@ ALTER TABLE `usuarios`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `carritos`
+--
+ALTER TABLE `carritos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT de la tabla `carrito_items`
+--
+ALTER TABLE `carrito_items`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
 -- AUTO_INCREMENT de la tabla `categorias`
 --
 ALTER TABLE `categorias`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+<<<<<<< HEAD
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+=======
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+>>>>>>> 745c359bc7be12421a1d82e30cbdcc20b51a57a1
+
+--
+-- AUTO_INCREMENT de la tabla `imagenes_producto`
+--
+ALTER TABLE `imagenes_producto`
+<<<<<<< HEAD
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+=======
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+>>>>>>> 745c359bc7be12421a1d82e30cbdcc20b51a57a1
 
 --
 -- AUTO_INCREMENT de la tabla `pedidos`
 --
 ALTER TABLE `pedidos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+<<<<<<< HEAD
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+=======
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+>>>>>>> 745c359bc7be12421a1d82e30cbdcc20b51a57a1
 
 --
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+<<<<<<< HEAD
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+=======
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+>>>>>>> 745c359bc7be12421a1d82e30cbdcc20b51a57a1
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Restricciones para tablas volcadas
 --
+
+--
+<<<<<<< HEAD
+-- Filtros para la tabla `carritos`
+--
+ALTER TABLE `carritos`
+  ADD CONSTRAINT `carritos_ibfk_1` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios` (`id`);
+
+--
+-- Filtros para la tabla `carrito_items`
+--
+ALTER TABLE `carrito_items`
+  ADD CONSTRAINT `carrito_items_ibfk_1` FOREIGN KEY (`carrito_id`) REFERENCES `carritos` (`id`),
+  ADD CONSTRAINT `carrito_items_ibfk_2` FOREIGN KEY (`producto_id`) REFERENCES `productos` (`id`);
+
+--
+=======
+>>>>>>> 745c359bc7be12421a1d82e30cbdcc20b51a57a1
+-- Filtros para la tabla `imagenes_producto`
+--
+ALTER TABLE `imagenes_producto`
+  ADD CONSTRAINT `imagenes_producto_ibfk_1` FOREIGN KEY (`id_producto`) REFERENCES `productos` (`id`);
 
 --
 -- Filtros para la tabla `pedidos`
