@@ -27,10 +27,7 @@ class Conexion
         $this->result = $this->sql;
         $this->filasAfectadas = $this->mySQLI->affected_rows;
         $this->id = $this->mySQLI->insert_id;
-<<<<<<< HEAD
-=======
-        
->>>>>>> 745c359bc7be12421a1d82e30cbdcc20b51a57a1
+
     }
     public function obtenerFilasAfectadas()
     {
@@ -45,8 +42,4 @@ class Conexion
     {
         return $this->id;
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 745c359bc7be12421a1d82e30cbdcc20b51a57a1

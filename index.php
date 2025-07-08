@@ -59,6 +59,9 @@ if (isset($_GET["accion"])) {
         case "panelAdmin2":
             $controlador->verPagina("Vista/html/panelAdmin3.php");
             break;
+        case "dashboard":
+            $controlador->verPagina("Vista/html/dashboard.php");
+            break;
         case "nuevoProd":
             $ruta_indexphp = "upload";
             $extensiones = array('image/jpg', 'image/jpeg', 'image/png');
@@ -190,10 +193,8 @@ if (isset($_GET["accion"])) {
                 exit();
             }
             // Aquí iría el flujo de pago si está logueado
-            $controlador->procesarPago();
-            break;
-
-
+            // $controlador->procesarPago();
+            // break;
     }
     if (isset($_POST['producto_a_comprar'])) {
         $_SESSION['producto_a_comprar'] = $_POST['producto_a_comprar'];
@@ -218,7 +219,6 @@ if (isset($_GET["accion"])) {
             $_SESSION['producto_id'] = $_POST['id'];
         }
         $controlador->verDetalleProducto();
-
     }
 } else {
     $controlador->verPagina("Vista/html/inicio.php");

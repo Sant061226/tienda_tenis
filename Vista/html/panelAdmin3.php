@@ -17,6 +17,7 @@
             <a href="index.php?accion=panelAdmin">Productos</a>
             <a href="index.php?accion=panelAdmin1">Categorias</a>
             <a href="index.php?accion=panelAdmin2">Pedidos</a>
+            <a href="index.php?accion=dashboard">DashBoard</a>
             <a href="index.php?accion=cerrarSesion">Cerrar Sesión</a>
         </nav>
     </header>

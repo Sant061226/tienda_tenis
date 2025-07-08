@@ -110,7 +110,6 @@ footer {
   margin-top: 1rem;
 }
 
-<<<<<<< HEAD
 .adminsty table {
   display: flex;
   flex-direction: column;
@@ -119,8 +118,6 @@ footer {
   margin-top: 1rem;
 }
 
-=======
->>>>>>> 745c359bc7be12421a1d82e30cbdcc20b51a57a1
 .navbar button {
   margin-bottom: 1rem;
   padding: 0.5rem;
@@ -189,11 +186,7 @@ footer {
 .carousel .next {
   position: absolute;
   top: 40%;
-<<<<<<< HEAD
   background: rgba(0, 0, 0, 0.5);
-=======
-  background: rgba(0,0,0,0.5);
->>>>>>> 745c359bc7be12421a1d82e30cbdcc20b51a57a1
   color: #fff;
   border: none;
   font-size: 1.5rem;
@@ -202,7 +195,6 @@ footer {
   border-radius: 50%;
   z-index: 2;
 }
-<<<<<<< HEAD
 .carousel .prev {
   left: 0;
 }
@@ -212,8 +204,3 @@ footer {
 .carousel img {
   border-radius: 8px;
 }
-=======
-.carousel .prev { left: 0; }
-.carousel .next { right: 0; }
-.carousel img { border-radius: 8px; }
->>>>>>> 745c359bc7be12421a1d82e30cbdcc20b51a57a1

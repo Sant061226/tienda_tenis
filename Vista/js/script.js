@@ -7,11 +7,7 @@ $(document).ready(function () {
   verPedidos();
   verPedUs();
   iniciarCarruselesAutomaticos();
-<<<<<<< HEAD
   VerdetalleProducto();
-=======
->>>>>>> 745c359bc7be12421a1d82e30cbdcc20b51a57a1
-
 });
 function verPedUs() {
   $.post("Modelo/VerPedidosClientes.php", {}, function (respuesta) {
@@ -60,44 +56,52 @@ function compraSimulada() {
     }
   );
 }
-$(document).on('click', '.filtro-categoria', function (e) {
+$(document).on("click", ".filtro-categoria", function (e) {
   e.preventDefault();
-  var id_categoria = $(this).data('id');
-  $.post("Modelo/VerProductosFiltro.php", { id_categoria: id_categoria }, function (respuesta) {
-    $("#producto").html(respuesta);
-  });
+  var id_categoria = $(this).data("id");
+  $.post(
+    "Modelo/VerProductosFiltro.php",
+    { id_categoria: id_categoria },
+    function (respuesta) {
+      $("#producto").html(respuesta);
+    }
+  );
 });
-$(document).on('click', '.filtro-categoria', function (e) {
+$(document).on("click", ".filtro-categoria", function (e) {
   e.preventDefault();
-  var id_categoria = $(this).data('id');
+  var id_categoria = $(this).data("id");
   // Quitar la clase activa de todos los botones
-  $('.navbar button').removeClass('active');
+  $(".navbar button").removeClass("active");
   // Agregar la clase activa al botón presionado
-  $(this).closest('button').addClass('active');
-  $.post("Modelo/VerProductosFiltro.php", { id_categoria: id_categoria }, function (respuesta) {
-    $("#producto").html(respuesta);
-  });
+  $(this).closest("button").addClass("active");
+  $.post(
+    "Modelo/VerProductosFiltro.php",
+    { id_categoria: id_categoria },
+    function (respuesta) {
+      $("#producto").html(respuesta);
+    }
+  );
 });
 $(document).ready(function () {
-  $('#abrirModalCliente').click(function (e) {
+  $("#abrirModalCliente").click(function (e) {
     e.preventDefault();
-    $('#modalCliente').fadeIn();
+    $("#modalCliente").fadeIn();
   });
-  $('#cerrarModalCliente').click(function () {
-    $('#modalCliente').fadeOut();
+  $("#cerrarModalCliente").click(function () {
+    $("#modalCliente").fadeOut();
   });
   // Cierra el modal si se hace clic fuera del contenido
-  $('#modalCliente').click(function (e) {
+  $("#modalCliente").click(function (e) {
     if (e.target === this) $(this).fadeOut();
   });
 });
 var carruselTimers = {};
 
 function iniciarCarruselesAutomaticos() {
-  $('.carousel').each(function () {
+  $(".carousel").each(function () {
     var $carousel = $(this);
-    var $imgs = $carousel.find('.carousel-img');
-    var carouselId = $carousel.data('prod');
+    var $imgs = $carousel.find(".carousel-img");
+    var carouselId = $carousel.data("prod");
     if ($imgs.length > 1) {
       // Evita múltiples intervalos para el mismo carrusel
       if (carruselTimers[carouselId]) {
@@ -105,7 +109,7 @@ function iniciarCarruselesAutomaticos() {
       }
       $imgs.hide().first().show();
       carruselTimers[carouselId] = setInterval(function () {
-        var idx = $imgs.index($imgs.filter(':visible'));
+        var idx = $imgs.index($imgs.filter(":visible"));
         $imgs.eq(idx).hide();
         idx = (idx + 1) % $imgs.length;
         $imgs.eq(idx).show();
@@ -115,76 +119,76 @@ function iniciarCarruselesAutomaticos() {
 }
 
 // Al cargar productos o filtrar
-$(document).on('DOMSubtreeModified', '#producto', function () {
+$(document).on("DOMSubtreeModified", "#producto", function () {
   iniciarCarruselesAutomaticos();
 });
 
-
 // Botones manuales
-$(document).on('click', '.carousel .prev, .carousel .next', function () {
-  var $carousel = $(this).closest('.carousel');
-  var $imgs = $carousel.find('.carousel-img');
-  var idx = $imgs.index($imgs.filter(':visible'));
+$(document).on("click", ".carousel .prev, .carousel .next", function () {
+  var $carousel = $(this).closest(".carousel");
+  var $imgs = $carousel.find(".carousel-img");
+  var idx = $imgs.index($imgs.filter(":visible"));
   $imgs.eq(idx).hide();
-  if ($(this).hasClass('next')) {
+  if ($(this).hasClass("next")) {
     idx = (idx + 1) % $imgs.length;
   } else {
     idx = (idx - 1 + $imgs.length) % $imgs.length;
   }
   $imgs.eq(idx).show();
-<<<<<<< HEAD
 });
-// carrito 
+// carrito
 function VerdetalleProducto() {
   var id = $("input[name='id']").val();
 
   $.post("Modelo/detalleProducto.php", { id: id }, function (respuesta) {
     $("#detalle-producto").html(respuesta);
   });
-
 }
 
-$('#btnAgregarCarrito').on('click', function (e) {
+$("#btnAgregarCarrito").on("click", function (e) {
   e.preventDefault();
-  var datos = $('#Form-agregarCarrito').serialize();
-  $.post('index.php?accion=agregarCarrito', datos, function (respuesta) {
+  var datos = $("#Form-agregarCarrito").serialize();
+  $.post("index.php?accion=agregarCarrito", datos, function (respuesta) {
     verCarrito();
-    alert('Producto añadido al carrito');
+    alert("Producto añadido al carrito");
   });
 });
 
-
 function verCarrito() {
-  $('#tabla-carrito').load('index.php?accion=verCarrito');
+  $("#tabla-carrito").load("index.php?accion=verCarrito");
 }
 
 // Delegar el evento para los botones de paginación (funciona para productos y filtrados)
-$(document).on('click', '.btn-pagina', function () {
-  var pagina = $(this).data('pagina');
+$(document).on("click", ".btn-pagina", function () {
+  var pagina = $(this).data("pagina");
   // Busca si hay un filtro de categoría activo
-  var id_categoria = $('.navbar button.active').data('id') || 0;
+  var id_categoria = $(".navbar button.active").data("id") || 0;
   // Si hay filtro, usa VerProductosFiltro.php, si no, usa VerProductos.php
   if (id_categoria && id_categoria > 0) {
-    $.post("Modelo/VerProductosFiltro.php", { pagina: pagina, id_categoria: id_categoria }, function (respuesta) {
-      $("#producto").html(respuesta);
-    });
+    $.post(
+      "Modelo/VerProductosFiltro.php",
+      { pagina: pagina, id_categoria: id_categoria },
+      function (respuesta) {
+        $("#producto").html(respuesta);
+      }
+    );
   } else {
     $.post("Modelo/VerProductos.php", { pagina: pagina }, function (respuesta) {
       $("#producto").html(respuesta);
     });
   }
 });
-$(document).on('click', '.filtro-categoria', function (e) {
+$(document).on("click", ".filtro-categoria", function (e) {
   e.preventDefault();
-  var id_categoria = $(this).data('id');
-  $('.navbar button').removeClass('active');
-  $(this).closest('button').addClass('active');
+  var id_categoria = $(this).data("id");
+  $(".navbar button").removeClass("active");
+  $(this).closest("button").addClass("active");
   // Siempre carga la página 1 al filtrar
-  $.post("Modelo/VerProductosFiltro.php", { id_categoria: id_categoria, pagina: 1 }, function (respuesta) {
-    $("#producto").html(respuesta);
-  });
+  $.post(
+    "Modelo/VerProductosFiltro.php",
+    { id_categoria: id_categoria, pagina: 1 },
+    function (respuesta) {
+      $("#producto").html(respuesta);
+    }
+  );
 });
-
-=======
-});
->>>>>>> 745c359bc7be12421a1d82e30cbdcc20b51a57a1

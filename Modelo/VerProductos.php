@@ -3,7 +3,6 @@
 require_once "Conexion.php";
 $conexion = new Conexion();
 $conexion->abrir();
-<<<<<<< HEAD
 
 session_start();
 
@@ -26,24 +25,17 @@ $total_paginas = max(1, ceil($total_resultados / $resultados_por_pagina));
 $offset = ($pagina_actual - 1) * $resultados_por_pagina;
 
 // Consulta principal con paginación
-=======
-$id_categoria = isset($_POST['id_categoria']) ? intval($_POST['id_categoria']) : 0;
->>>>>>> 745c359bc7be12421a1d82e30cbdcc20b51a57a1
 $sql = "SELECT productos.id, productos.nombre, productos.especificaciones, productos.precio, categorias.nombre as Categoria, categorias.id as id_cat 
         FROM productos 
         JOIN categorias ON productos.id_categoria=categorias.id";
 if ($id_categoria > 0) {
     $sql .= " WHERE productos.id_categoria = $id_categoria";
 }
-<<<<<<< HEAD
 $sql .= " LIMIT $resultados_por_pagina OFFSET $offset";
 
-=======
->>>>>>> 745c359bc7be12421a1d82e30cbdcc20b51a57a1
 $conexion->consulta($sql);
 $result = $conexion->obtenerResult();
 $filas = $conexion->obtenerFilasAfectadas();
-session_start();
 ?>
 <section id="admin" class="adminsty">
 
@@ -69,12 +61,8 @@ session_start();
                         <?php if (count($imagenes) > 1): ?>
                             <div class="carousel" data-prod="<?php echo $id_prod; ?>">
                                 <?php foreach ($imagenes as $idx => $img): ?>
-<<<<<<< HEAD
                                     <img src="upload/<?php echo $img; ?>" class="carousel-img"
                                         style="display:<?php echo $idx == 0 ? '' : 'none'; ?>;" width="50%" alt="">
-=======
-                                    <img src="upload/<?php echo $img; ?>" class="carousel-img" style="display:<?php echo $idx == 0 ? '' : 'none'; ?>;" width="50%" alt="">
->>>>>>> 745c359bc7be12421a1d82e30cbdcc20b51a57a1
                                 <?php endforeach; ?>
                                 <button class="prev" type="button">&#10094;</button>
                                 <button class="next" type="button">&#10095;</button>
@@ -91,23 +79,18 @@ session_start();
                             </form>
                         <?php } else { ?>
                             <form>
-<<<<<<< HEAD
                                 <button type="button" disabled style="background:#ccc;cursor:not-allowed;">Inicia sesión para
                                     comprar</button>
                             </form>
                             <form action="index.php?accion=detalle" method="post">
                                 <input type="hidden" name="id" value="<?php echo $fila['id']; ?>">
                                 <button type="submit">Ver Detalle</button>
-=======
-                                <button type="button" disabled style="background:#ccc;cursor:not-allowed;">Inicia sesión para comprar</button>
->>>>>>> 745c359bc7be12421a1d82e30cbdcc20b51a57a1
                             </form>
                         <?php } ?>
                         <div id="compra"></div>
                     </div>
                 <?php } ?>
             </div>
-<<<<<<< HEAD
             <br>
             <div class="paginacion">
                 <?php if ($pagina_actual > 1): ?>
@@ -124,8 +107,6 @@ session_start();
                     <button class="btn-pagina" data-pagina="<?php echo $pagina_actual + 1; ?>">Siguiente</button>
                 <?php endif; ?>
             </div>
-=======
->>>>>>> 745c359bc7be12421a1d82e30cbdcc20b51a57a1
         <?php } else { ?>
             <h3>No hay productos en esta categoría.</h3>
         <?php } ?>

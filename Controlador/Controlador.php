@@ -33,7 +33,6 @@ class Controlador
             $_SESSION["usuario"] = ($usuario->nombre);
             $_SESSION["correo"] = ($usuario->correo);
             $_SESSION["rol"] = ($usuario->rol);
-<<<<<<< HEAD
             // MODIFIQUE
             if (isset($_GET['redirigir']) && $_GET['redirigir'] == 'carrito') {
                 header("Location: index.php?accion=verCarrito");
@@ -42,8 +41,6 @@ class Controlador
 
 
 
-=======
->>>>>>> 745c359bc7be12421a1d82e30cbdcc20b51a57a1
             header("Location: index.php?accion=catalogo");
             exit();
         } else {
@@ -180,11 +177,7 @@ class Controlador
     }
 
     // Simula la compra de un producto
-<<<<<<< HEAD
-    public function compraSimulada($idusuario, $idproducto, $cantiped, $fechaped,)
-=======
-    public function compraSimulada($idusuario, $idproducto, $cantiped, $fechaped, )
->>>>>>> 745c359bc7be12421a1d82e30cbdcc20b51a57a1
+    public function compraSimulada($idusuario, $idproducto, $cantiped, $fechaped)
     {
         if (!$idusuario && isset($_SESSION['idusuario'])) {
             $idusuario = $_SESSION['idusuario'];
@@ -228,7 +221,7 @@ class Controlador
         $gestionproducto = new GestorImagenesProducto();
         return $gestionproducto->obtenerUltimoId();
     }
-<<<<<<< HEAD
+        
     // CARRITO
     public function verDetalleProducto()
     {
@@ -282,6 +275,5 @@ class Controlador
         }
         require "Vista/html/Carrito.php";
     }
-=======
->>>>>>> 745c359bc7be12421a1d82e30cbdcc20b51a57a1
+
 }
